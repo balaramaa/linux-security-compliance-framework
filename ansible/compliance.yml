@@ -1,1 +1,9 @@
+- name: Validate SSH Config
+  hosts: all
+  tasks:
+    - name: Check PermitRootLogin
+      command: grep PermitRootLogin /etc/ssh/sshd_config
+      register: result
 
+    - debug:
+        var: result.stdout
